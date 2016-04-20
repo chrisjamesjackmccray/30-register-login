@@ -2,6 +2,7 @@ class LoginController {
   constructor($state, UserService) {
     this._$state = $state;
     this._UserService = UserService;
+    this.user = this._userService.new();
 
     /* STEP 1 - create a variable user and set it to
       our empty user object from the UserService */
@@ -12,6 +13,14 @@ class LoginController {
   promise, and use $state.go to redirect to the profile page */
 
   login() {
+    this._UserService
+    .login(this.user);
+    .then((response) => {
+     this._$state.go("profile");
+   })
+   .catch((error) => {
+     console.error(error);
+   });
   }
 }
 

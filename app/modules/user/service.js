@@ -1,7 +1,6 @@
 class UserService {
   constructor($q, $firebaseAuth) {
     this._$q = $q;
-    this._$firebaseObject = $firebaseObject;
 
     /* STEP 1 - ADD YOUR URL HERE */
     this.ref = new Firebase("https://29-auth-services.firebaseio.com/");
@@ -9,19 +8,18 @@ class UserService {
   }
 
   isLoggedIn() {
-    return new this._$q((response, reject) => {
+    return new this._$q((resolve, reject) => {
       return this.auth.$requireAuth();
 
       let authData = this.auth.$getAuth();
 
       if (authData) {
-        console.log("Logged in as:", authData.uid);
         this.user = authData;
         resolve(this.user);
       }
       else {
         this.user = undefined;
-        reject("Not logged in");
+        reject("Logged out");
       }
 
     })
@@ -37,19 +35,14 @@ class UserService {
   */
   login(user) {
     return new this._$q((resolve, reject) => {
-
-      this.auth.$createUser(user)
-      .then((response) => {
-        return this.auth.$authWithPassword(user);
-      })
+      this.auth.$authWithPassword(user)
        .then((response) =>  {
         this.user = response;
         resolve(this.user);
       })
       .catch((error) => {
         reject(error);
-      })
-    })
+      });
   });
 
   /* STEP 3 - Unauthorize the user. Firebase API docs! */
@@ -79,6 +72,18 @@ class UserService {
   */
   create(user) {
     return new this._$q((resolve, reject) => {
+      this.auth.$createUser(user)
+      .then((response) => {
+        return this.auth.$authWithPassword(user);
+      })
+       .then((response) =>  {
+        this.user = response;
+        resolve(this.user);
+      })
+      .catch((error) => {
+        reject(error);
+      })
+
     });
   }
 

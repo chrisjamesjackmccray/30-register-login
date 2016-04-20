@@ -12,6 +12,6 @@ let user = angular.module('tiy.user', []);
 user.config(config);
 user.controller('ProfileController', profileController);
 user.controller('LoginController', loginController);
-user.service('RegisterService', registerController);
+user.controller('RegisterService', registerController);
 
 export default user;

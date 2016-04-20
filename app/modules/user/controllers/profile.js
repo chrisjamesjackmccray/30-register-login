@@ -3,6 +3,16 @@ class ProfileController {
     this._$state = $state;
     this._UserService = UserService;
 
+    this._UserService
+    .LoggedIn(
+    .then((response) => {
+      this.user = response;
+    })
+    .catch((error) => {
+      this._$state.go("login");
+    })
+    )
+
     /* STEP 1 - Call the isLoggedIn function on UserService.
       In the .then (the successful version), you'll get a response
       that contains the user's information. Save that to this.user.

@@ -4,17 +4,32 @@
     <meta charset="utf-8">
     <title> 30-register-login </title>
     <link rel="stylesheet" href="styles/main.css">
+    <script src="http goes here" async defer> </script>
   </head>
   <body>
 
-    <form class="form" ng-submit="registerCtrl.register">
+    <div id="map"></div>
+
+    <script>
+      let map;
+      function initMap() {
+        map = new google.maps.Map(document.querySelector("#map"), {
+          center: {lat: -34.397, lng: 150.644 },
+          zoom: 15
+        });
+      }
+    </script>
+
+
+
+    <!-- <form class="form" ng-submit="registerCtrl.register">
       <input class="email" type="email" placeholder="email" ng-model="RegisterCtrl.newUser.name">
 
       <input class="password" type="password" placeholder="password" ng-model="RegisterCtrl.newUser.password">
 
       <input class="button" type="button" value="Register" ng-submit="registerCtrl.register">
 
-    </form>
+    </form> -->
 
     <div ui-view></div>
 

@@ -1,6 +1,6 @@
-function config($stateProvider) {
-  $stateProvider
-  .state("map",) {
-    
-  }
-}
+// function config($stateProvider) {
+//   $stateProvider
+//   .state("map",) {
+//
+//   }
+// }

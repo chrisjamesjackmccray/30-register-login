@@ -61,10 +61,10 @@ import uiRouter from 'angular-ui-router';
 
 import firebase from 'firebase';
 import angularFire from 'angularfire';
-import ngMap from 'ngmap';
+// import ngMap from 'ngmap';
 
 import user from './modules/user';
-import map from './modules/map';
+// import map from './modules/map';
 
 let App = angular.module('app', [
   'ui.router',

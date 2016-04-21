@@ -69,8 +69,8 @@ import user from './modules/user';
 let App = angular.module('app', [
   'ui.router',
   'firebase',
-  'ngMap',
-  'tiy.map',
+  // 'ngMap',
+  // 'tiy.map',
   'tiy.user'
 ]);
 

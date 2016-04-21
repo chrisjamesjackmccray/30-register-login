@@ -1,11 +1,18 @@
-<form class="form" ng-submit="registerCtrl.register">
+<form class="form" ng-submit="registerCtrl.register()">
+  <input class="registeremail" type="email" placeholder="email" ng-model="registerCtrl.newUser.email">
+  <input class="registerpassword" type="password" placeholder="password" ng-model="registerCtrl.newUser.password">
+  <input class="registerbutton" type="submit" value="Register">
+
+  <a class="registerbutton" ui-sref="login"> </a>
+
+
+</form>
+
+<!-- <form class="form" ng-submit="registerCtrl.register">
   <input class="email" type="email" placeholder="email" ng-model="RegisterCtrl.newUser.name">
 
   <input class="password" type="password" placeholder="password" ng-model="RegisterCtrl.newUser.password">
 
   <input class="button" type="button" value="Register" ng-submit="registerCtrl.register">
 
-  <a class="Loginbutton" ui-sref="login"> </a>
-
-
-</form>
+</form> -->

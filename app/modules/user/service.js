@@ -9,7 +9,6 @@ class UserService {
 
   isLoggedIn() {
     return new this._$q((resolve, reject) => {
-      return this.auth.$requireAuth();
 
       let authData = this.auth.$getAuth();
 
@@ -37,16 +36,20 @@ class UserService {
     return new this._$q((resolve, reject) => {
       this.auth.$authWithPassword(user)
        .then((response) =>  {
+         console.log(response);
         this.user = response;
         resolve(this.user);
       })
       .catch((error) => {
+        console.log(error);
         reject(error);
       });
-  });
+    });
+  }
 
   /* STEP 3 - Unauthorize the user. Firebase API docs! */
   logout() {
+    this.auth.$unauth();
   }
 
   /* STEP 4 - Return an object representing a "new" user with

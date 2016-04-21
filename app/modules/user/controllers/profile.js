@@ -4,14 +4,13 @@ class ProfileController {
     this._UserService = UserService;
 
     this._UserService
-    .LoggedIn(
+    .isLoggedIn()
       .then((response) => {
         this.user = response;
       })
       .catch((error) => {
         this._$state.go("login");
       })
-    )
 
     /* STEP 1 - Call the isLoggedIn function on UserService.
       In the .then (the successful version), you'll get a response
@@ -25,7 +24,8 @@ class ProfileController {
   /* STEP 2 - Call the UserService logout function, then use $state.go
     to send them to the login page */
   logout() {
-    $state.go("login");
+    this._UserService.logout();
+    this._$state.go("login");
   }
 }
 
